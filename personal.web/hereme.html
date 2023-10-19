@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>here me.my website</title>
+    <style>
+        body{
+            text-align: center;
+            margin-top: 10%;
+        }
+        .clock{
+            color: tomato;
+           
+            text-align: center;
+           
+        }
+    </style>
+</head>
+<body>
+    <h2>hello...</h2>
+    <h4> i am available every SUNDAY live </h4>
+    <h4>Time: 09:00 To 12:00 Am </h4>
+    <div class="clock">
+        <div id="date"></div>
+        <div id="time"></div>
+    </div>
+</body>
+<script>
+    function updateClock() {
+        const now = new Date();
+        const dateElement = document.getElementById('date');
+        const timeElement = document.getElementById('time');
+        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        
+        dateElement.textContent = now.toLocaleDateString(undefined, options);
+        
+        let hours = now.getHours();
+        const minutes = now.getMinutes().toString().padStart(2, '0');
+        const seconds = now.getSeconds().toString().padStart(2, '0');
+        let ampm = 'AM';
+    
+        if (hours > 12) {
+            hours -= 12;
+            ampm = 'PM';
+        }
+    
+        hours = hours.toString().padStart(2, '0');
+    
+        timeElement.textContent = `${hours}:${minutes}:${seconds} ${ampm}`;
+    }
+    
+    // Update the clock every second
+    setInterval(updateClock, 1000);
+    
+    // Initial call to set the clock
+    updateClock();
+    
+</script>
+</html>
